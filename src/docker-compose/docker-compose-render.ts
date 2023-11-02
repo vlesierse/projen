@@ -1,14 +1,14 @@
 import { DockerComposeBuild } from "./docker-compose";
 import {
   DockerComposeNetworkConfig,
-  IDockerComposeNetworkConfig,
+  IDockerComposeNetworkInfo,
 } from "./docker-compose-network";
 import { DockerComposeServicePort } from "./docker-compose-port";
 import { DockerComposeService } from "./docker-compose-service";
 import {
   DockerComposeVolumeConfig,
   DockerComposeVolumeMount,
-  IDockerComposeVolumeConfig,
+  IDockerComposeVolumeInfo,
 } from "./docker-compose-volume";
 import { decamelizeKeysRecursively } from "../util";
 
@@ -45,7 +45,7 @@ export function renderDockerComposeFile(
 ): object {
   // Record volume configuration
   const volumeConfig: Record<string, DockerComposeVolumeConfig> = {};
-  const volumeInfo: IDockerComposeVolumeConfig = {
+  const volumeInfo: IDockerComposeVolumeInfo = {
     addVolumeConfiguration(
       volumeName: string,
       configuration: DockerComposeVolumeConfig
@@ -58,7 +58,7 @@ export function renderDockerComposeFile(
   };
   // Record network configuration
   const networkConfig: Record<string, DockerComposeNetworkConfig> = {};
-  const networkInfo: IDockerComposeNetworkConfig = {
+  const networkInfo: IDockerComposeNetworkInfo = {
     addNetworkConfiguration(
       networkName: string,
       configuration: DockerComposeNetworkConfig

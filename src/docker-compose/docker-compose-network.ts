@@ -101,13 +101,13 @@ export interface IDockerComposeNetworkBinding {
    * @param networkConfig the network configuration
    * @returns the service name
    */
-  bind(networkConfig: IDockerComposeNetworkConfig): string;
+  bind(networkConfig: IDockerComposeNetworkInfo): string;
 }
 
 /**
  * Storage for network configuration.
  */
-export interface IDockerComposeNetworkConfig {
+export interface IDockerComposeNetworkInfo {
   /**
    * Add network configuration to the repository.
    * @param networkName

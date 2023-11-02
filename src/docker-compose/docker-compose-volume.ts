@@ -36,13 +36,13 @@ export interface IDockerComposeVolumeBinding {
    * @param volumeConfig the volume configuration
    * @returns mounting instructions for the service.
    */
-  bind(volumeConfig: IDockerComposeVolumeConfig): DockerComposeVolumeMount;
+  bind(volumeConfig: IDockerComposeVolumeInfo): DockerComposeVolumeMount;
 }
 
 /**
  * Storage for volume configuration.
  */
-export interface IDockerComposeVolumeConfig {
+export interface IDockerComposeVolumeInfo {
   /**
    * Add volume configuration to the repository.
    * @param volumeName

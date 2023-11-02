@@ -1,7 +1,7 @@
 import {
   DockerComposeNetworkConfig,
   IDockerComposeNetworkBinding,
-  IDockerComposeNetworkConfig,
+  IDockerComposeNetworkInfo,
 } from "./docker-compose-network";
 import {
   DockerComposePortMappingOptions,
@@ -18,7 +18,7 @@ import {
   DockerComposeVolumeConfig,
   DockerComposeVolumeMount,
   IDockerComposeVolumeBinding,
-  IDockerComposeVolumeConfig,
+  IDockerComposeVolumeInfo,
 } from "./docker-compose-volume";
 import { Component } from "../component";
 import { Project } from "../project";
@@ -91,7 +91,7 @@ export class DockerCompose extends Component {
     targetPath: string
   ): IDockerComposeVolumeBinding {
     return {
-      bind(_volumeInfo: IDockerComposeVolumeConfig): DockerComposeVolumeMount {
+      bind(_volumeInfo: IDockerComposeVolumeInfo): DockerComposeVolumeMount {
         return {
           type: "bind",
           source: sourcePath,
@@ -116,7 +116,7 @@ export class DockerCompose extends Component {
     options: DockerComposeVolumeConfig = {}
   ): IDockerComposeVolumeBinding {
     return {
-      bind(volumeInfo: IDockerComposeVolumeConfig): DockerComposeVolumeMount {
+      bind(volumeInfo: IDockerComposeVolumeInfo): DockerComposeVolumeMount {
         volumeInfo.addVolumeConfiguration(volumeName, options);
 
         return {
@@ -141,7 +141,7 @@ export class DockerCompose extends Component {
     options: DockerComposeNetworkConfig = {}
   ): IDockerComposeNetworkBinding {
     return {
-      bind(networkInfo: IDockerComposeNetworkConfig): string {
+      bind(networkInfo: IDockerComposeNetworkInfo): string {
         networkInfo.addNetworkConfiguration(networkName, options);
 
         return networkName;
